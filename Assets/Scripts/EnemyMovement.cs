@@ -10,13 +10,13 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        if (waypoints.Length > 0)
+        if (waypoints != null && waypoints.Length > 0)
             transform.position = waypoints[0].position;
     }
 
     void Update()
     {
-        if (currentIndex >= waypoints.Length) return;
+        if (waypoints == null || currentIndex >= waypoints.Length) return;
 
         Transform target = waypoints[currentIndex];
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
@@ -31,6 +31,8 @@ public class EnemyMovement : MonoBehaviour
 
     void ReachEnd()
     {
+        if (GameManager.Instance != null)
+            GameManager.Instance.LoseLife();
         Destroy(gameObject);
     }
 }
