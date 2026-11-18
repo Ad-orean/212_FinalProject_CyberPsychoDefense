@@ -141,6 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c251fa6717b0aac408061614bdd663c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  maxHealth: 300
-  health: 300
-  reward: 10
+  maxHealth: 90
+  health: 90
+  reward: 100

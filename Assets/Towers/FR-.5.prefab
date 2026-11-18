@@ -107,5 +107,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tower
   range: 5
   fireRate: 0.5
-  projectilePrefab: {fileID: 679651653740600113, guid: 72aac61de2ea8b545beac67812ac3e21, type: 3}
+  projectilePrefab: {fileID: 7780269930316418252, guid: ab344894ddc7e6f4bb81fa0a93fdce25, type: 3}
   firePoint: {fileID: 3225192732328648484}
