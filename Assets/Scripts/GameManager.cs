@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
     public UnityEvent onLivesChanged;
 
     void Awake()
+
     {
+    Application.targetFrameRate = -1;//Kaelans Contributiion
         if (Instance == null)
             Instance = this;
         else
@@ -50,5 +52,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over");
         Time.timeScale = 0f;
+
+        
     }
+    
 }

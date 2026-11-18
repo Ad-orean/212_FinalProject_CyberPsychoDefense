@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
     public float health;
     public int reward = 10;
 
+    private bool isDead = false;
+
     void Start()
     {
         health = maxHealth;
@@ -13,6 +15,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isDead) return;
+
         health -= damage;
         if (health <= 0f)
             Die();
@@ -20,8 +24,12 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        if (isDead) return;
+        isDead = true;
+
         if (GameManager.Instance != null)
             GameManager.Instance.AddMoney(reward);
+
         Destroy(gameObject);
     }
 }

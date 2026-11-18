@@ -7,17 +7,21 @@ public class Tower : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform firePoint;
 
-    private float cooldown;
+    private float shotPool = 0f;
 
     void Update()
     {
-        cooldown -= Time.deltaTime;
-
         Enemy target = GetTarget();
-        if (target != null && cooldown <= 0f)
+
+        if (target != null)
         {
-            Shoot(target);
-            cooldown = 1f / fireRate;
+            shotPool += Time.deltaTime;
+
+            while (shotPool >= (1f / fireRate))
+            {
+                Shoot(target);
+                shotPool -= 1f / fireRate;
+            }
         }
     }
 
@@ -41,6 +45,8 @@ public class Tower : MonoBehaviour
 
     void Shoot(Enemy target)
     {
+        if (projectilePrefab == null || firePoint == null) return;
+
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Projectile projectile = proj.GetComponent<Projectile>();
         if (projectile != null)
